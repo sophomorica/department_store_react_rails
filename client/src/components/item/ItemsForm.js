@@ -6,11 +6,11 @@ class ItemsForm extends React.Component{
   defaultValues = { name: "", price: ""}
   state = {...this.defaultValues}
   handleSubmit = (e)=>{
-    const {id} = this.props.match.params
+    const id = this.props.match.params.department_id
     e.preventDefault()
     axios.post(`/api/departments/${id}/items`,{ ...this.state, })
       .then(res=>{
-       this.props.history.push(`/departments/${id}`)
+       this.props.history.push(`/departments/${id}/`)
       })
     // TODO: Make api Post request
     this.setState({...this.defaultValues})
