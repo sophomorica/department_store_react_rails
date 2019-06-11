@@ -31,9 +31,7 @@ class Api::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price)
   end
-  def set_item
-    
-  end
+  
   def set_department
     @department = Department.find(params[:department_id])
   end
