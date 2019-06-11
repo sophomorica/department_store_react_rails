@@ -9,7 +9,7 @@ const Departments = (props) =>{
   useEffect(() =>{
     axios.get('/api/departments')
       .then(res =>{
-        setDep(res.data)
+        setDeps(res.data)
       })
   },[])
 
@@ -49,3 +49,4 @@ const Departments = (props) =>{
   )
   
 }
+export default Departments
