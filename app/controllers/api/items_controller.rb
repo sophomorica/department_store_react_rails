@@ -1,7 +1,7 @@
 class Api::ItemsController < ApplicationController
-  before_action :set_menu
+  before_action :set_department
   def index
-    @items = @menu.items.all
+    @items = @department.items.all
     render json: @items
   end
   def show
@@ -12,12 +12,12 @@ class Api::ItemsController < ApplicationController
     if item.save
       render json: item
     else
-      render json: { errors: item.errors }, status: :unprocessable_entity 
+      render json: item.erros, status: 422
     end
   end
 
   def update
-    item = @menu.items.find(params[:id])
+    item = @department.items.find(params[:id])
     item.update(item_params)
     render json: item
   end
@@ -31,7 +31,10 @@ class Api::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price)
   end
-  def set_menu
+  def set_item
+    
+  end
+  def set_department
     @department = Department.find(params[:department_id])
   end
 end
