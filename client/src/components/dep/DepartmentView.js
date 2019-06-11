@@ -10,25 +10,32 @@ const DepartmentView = (props) =>{
     const {id} = props.match.params
     axios.get(`/api/departments/${id}/items`)
       .then(res =>{
-        debugger
         setDep(res.data)
       })
   },[])
 
   const renderItems = () => {
     if(dep.length <=0)
-    return <Header as='h2'>No Departments Yet</Header>
+    return <Header as='h2'>No Products Yet</Header>
+    // return dep.map(item =>(
+    //   <Card color='blue' key={item.id}>
+    //     <Card.Content>
+    //       <Card.Header>{item.name}</Card.Header>
+    //     </Card.Content>
+    //     <Card.Content extra>
+    //       <Button icon as={Link} to={`/departments/${item.id}`} color = "red">
+    //         <Icon name="trash"/>
+    //       </Button>
+    //     </Card.Content>
+    //   </Card>
+    // ))
     return dep.map(item =>(
-      <Card color='blue' key={item.id}>
-        <Card.Content>
-          <Card.Header>{item.name}</Card.Header>
-        </Card.Content>
-        <Card.Content extra>
-          <Button icon as={Link} to={`/departments/${item.id}`} color = "red">
-            <Icon name="trash"/>
-          </Button>
-        </Card.Content>
-      </Card>
+      <div style={{display:"flex", flexDirection:"column"}}>
+
+      <ul>
+        <li>{item.name}: ${item.price}</li>
+      </ul>
+      </div>
     ))
 
   }
@@ -37,7 +44,8 @@ const DepartmentView = (props) =>{
     <div>
     <Segment>
       
-      <Header as='h1'>The Stuff</Header>
+      <Header as='h1'>What We Got</Header>
+      <Header as='h2'>{props.name}</Header>
       <Card.Group>
         {renderItems()}
       </Card.Group>
@@ -46,6 +54,10 @@ const DepartmentView = (props) =>{
     </Segment>
     <br />
     <br />
+    <Button as={Link} to={`/departments/${props.match.params.id}/items/new`}  color='blue'>
+        Add Items
+      </Button>
+    
     <Button color='black' onClick={()=>props.history.goBack()}>
       Back
     </Button>
