@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import axios from 'axios'
-import {Card,  Button, Header, Segment } from 'semantic-ui-react'
+import {Card, Icon, Button, Header, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 
 const DepartmentView = (props) =>{
@@ -13,7 +13,15 @@ const DepartmentView = (props) =>{
         setDep(res.data)
       })
   },[])
-
+  const deleteItem = (item_id) =>{
+    const {id} = props.match.params
+    axios.delete(`/api/departments/${id}/items/${item_id}`)
+      .then(res=>{
+        let values = (dep.filter(item => item.id !==item_id))
+        setDep(values)
+      })
+      renderItems()
+  }
   const renderItems = () => {
     if(dep.length <=0)
     return <Header as='h2'>No Products Yet</Header>
@@ -33,7 +41,7 @@ const DepartmentView = (props) =>{
       <div style={{display:"flex", flexDirection:"column"}}>
 
       <ul>
-        <li>{item.name}: ${item.price}</li>
+        <li>{item.name}: ${item.price} <Button icon onClick={()=>deleteItem(item.id)}><Icon name='trash'/></Button></li>
       </ul>
       </div>
     ))

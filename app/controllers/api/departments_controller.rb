@@ -26,7 +26,7 @@ class Api::DepartmentsController < ApplicationController
   def destroy
     dep = Department.find(params[:id])
     dep.destroy
-    render json: Department.all
+    render json: {message: "dep deleted"}
   end
 
   private

@@ -33,7 +33,7 @@ const Departments = (props) =>{
         </Card.Content>
         <Card.Content extra>
           <Button as={Link} to={`/departments/${dep.id}`} color = "blue">View</Button>
-          <Button icon color="red" onClick={() => deleteDepartment(`${dep.id}`)}>
+          <Button icon color="red" onClick={() => deleteDepartment(dep.id)}>
             <Icon name="trash"/> Delete
           </Button>
         </Card.Content>
