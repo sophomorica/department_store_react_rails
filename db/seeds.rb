@@ -1,4 +1,4 @@
-3.times do
+8.times do
   department = Department.create(
     name: Faker::Commerce.department,
   )
