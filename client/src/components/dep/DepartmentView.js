@@ -66,7 +66,7 @@ const DepartmentView = (props) =>{
         Add Items
       </Button>
     
-    <Button color='black' onClick={()=>props.history.goBack()}>
+    <Button color='black' onClick={()=>props.history.push("/departments")}>
       Back
     </Button>
   </div>
