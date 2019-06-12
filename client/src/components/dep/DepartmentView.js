@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import axios from 'axios'
-import {Card, Icon, Button, Header, Segment } from 'semantic-ui-react'
+import {Card,  Button, Header, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 
 const DepartmentView = (props) =>{

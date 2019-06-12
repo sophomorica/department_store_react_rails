@@ -1,3 +1,3 @@
 class Item < ApplicationRecord
-  belongs_to :department, dependent: :destroy
+  belongs_to :department
 end

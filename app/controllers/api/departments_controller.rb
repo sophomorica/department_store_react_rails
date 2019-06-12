@@ -7,6 +7,7 @@ class Api::DepartmentsController < ApplicationController
   def show
 
   end
+
   def create
     department = Department.new(department_params)
     if department.save
@@ -19,12 +20,13 @@ class Api::DepartmentsController < ApplicationController
   def update
     department = Department.find(params[:id])
     department.update
-    render json: item
+    render json: department
   end
 
   def destroy
-    Department.find(params[:id]).destroy
-    render json: { message: 'department Deleted'}
+    dep = Department.find(params[:id])
+    dep.destroy
+    render json: Department.all
   end
 
   private
