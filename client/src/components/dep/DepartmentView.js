@@ -51,14 +51,11 @@ const DepartmentView = (props) =>{
 
     <div>
     <Segment>
-      
       <Header as='h1'>What We Got</Header>
       <Header as='h2'>{props.name}</Header>
       <Card.Group>
         {renderItems()}
       </Card.Group>
-      {/* <Header as='h3'>{product.department}</Header> */}
-      {/* <Header as='h5' color="grey">${product.price}</Header> */}
     </Segment>
     <br />
     <br />
