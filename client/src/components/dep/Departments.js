@@ -25,7 +25,6 @@ const Departments = (props) =>{
   const renderDeps = () => {
     if(deps.length <=0)
     return <Header as='h2'>No Departments Yet</Header>
-    debugger
     return deps.map(dep =>(
       <Card color='blue' key={dep.id}>
         <Card.Content>

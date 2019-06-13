@@ -25,18 +25,7 @@ const DepartmentView = (props) =>{
   const renderItems = () => {
     if(dep.length <=0)
     return <Header as='h2'>No Products Yet</Header>
-    // return dep.map(item =>(
-    //   <Card color='blue' key={item.id}>
-    //     <Card.Content>
-    //       <Card.Header>{item.name}</Card.Header>
-    //     </Card.Content>
-    //     <Card.Content extra>
-    //       <Button icon as={Link} to={`/departments/${item.id}`} color = "red">
-    //         <Icon name="trash"/>
-    //       </Button>
-    //     </Card.Content>
-    //   </Card>
-    // ))
+   
     return dep.map(item =>(
       <div style={{display:"flex", flexDirection:"column"}}>
 
@@ -50,22 +39,22 @@ const DepartmentView = (props) =>{
   return(
 
     <div>
-    <Segment>
-      <Header as='h1'>What We Got</Header>
-      <Header as='h2'>{props.name}</Header>
-      <Card.Group>
-        {renderItems()}
-      </Card.Group>
-    </Segment>
-    <br />
-    <br />
-    <Button as={Link} to={`/departments/${props.match.params.id}/items/new`}  color='blue'>
-        Add Items
-      </Button>
-    
-    <Button color='black' onClick={()=>props.history.push("/departments")}>
-      Back
-    </Button>
+        <Segment>
+          <Header as='h1'>What We Got</Header>
+          <Header as='h2'>{props.name}</Header>
+          <Card.Group>
+            {renderItems()}
+          </Card.Group>
+        </Segment>
+        <br />
+        <br />
+        <Button as={Link} to={`/departments/${props.match.params.id}/items/new`}  color='blue'>
+            Add Items
+          </Button>
+        
+        <Button color='black' onClick={()=>props.history.push("/departments")}>
+          Back
+        </Button>
   </div>
   )
 
